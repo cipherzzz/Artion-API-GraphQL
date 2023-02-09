@@ -3,9 +3,10 @@ package svc
 
 import (
 	"artion-api-graphql/internal/types"
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	eth "github.com/ethereum/go-ethereum/core/types"
-	"time"
 )
 
 // newNFTContract handles log event for new factory deployed ERC721/ERC1155 contract.
@@ -47,11 +48,12 @@ func newNFTContract(evt *eth.Log, lo *logObserver) {
 // extendNFTCollectionDetails collects details of an NFT contract.
 func extendNFTCollectionDetails(nft *types.Collection, evt *eth.Log, _ *logObserver) (err error) {
 	// NFT contract type is derived from the factory contract type
-	nft.Type, err = repo.NFTContractType(&evt.Address)
-	if err != nil {
-		log.Errorf("contract %s type not known; %s", evt.Address.String(), err.Error())
-		return err
-	}
+	// nft.Type, err = repo.NFTContractType(&evt.Address)
+	// if err != nil {
+	// 	log.Errorf("contract %s type not known; %s", evt.Address.String(), err.Error())
+	// 	return err
+	// }
+	nft.Type = types.ContractTypeERC721
 	log.Debugf("NFT contract %s is %s", nft.Address.String(), nft.Type)
 
 	blk, err := repo.GetHeader(evt.BlockNumber)

@@ -1,0 +1,40 @@
+{
+  "server": {
+    "bind": "0.0.0.0:7373",
+    "cors": [
+      "*"
+    ],
+    "write_timeout": 30,
+    "resolver_timeout": 240
+  },
+  "log": {
+    "level": "Info"
+  },
+  "node": {
+    "url": "wss://rpc.ankr.com/fantom_testnet/ws/6b3e97781946201e68dd1c620e0fdf759ed42be9ebd97c6f892036f37ea2bf89"
+  },
+  "db": {
+    "url": "mongodb://127.0.0.1:27017",
+    "db": "artion"
+  },
+  "shared_db": {
+    "url": "mongodb://127.0.0.1:27017",
+    "db": "artionshared"
+  },
+  "ipfs": {
+    "url": "localhost:5001",
+    "gateway_bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI1ZDExNmUxOS1mZjcxLTRiMTctOWQ4Mi0wZTY1YjFkNDBjZTciLCJlbWFpbCI6ImRldkBjaXBoZXJ6LmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI4OGE3YTJhYjMxM2ZmYmMzMzQ5NiIsInNjb3BlZEtleVNlY3JldCI6ImZjNzA0YzI5NzQ5ZGFkYmFiMWM1YWY5MzVhNDBiMzVkMmQ4ZDRkZGE4ZDgzYzQ3NWIzM2Y2NWYzNTY5NzVlNGMiLCJpYXQiOjE2NzUyODAyODR9.DEO04KfSZtLOBk4Aj998L1MMOsNUNTaS7A60BGWn96A",
+    "skip_http_gateways": false,
+    "file_cache_dir": "/tmp/artion/"
+  },
+  "auth": {
+    "bearer_secret": "0x0123456789",
+    "nonce_secret": "0xABCDEF"
+  },
+  "notification": {
+    "sendgrid": {
+      "domain": "https://api.sendgrid.com",
+      "key": "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"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-{
+[{
     "_id": {"$oid": "60f051b79caff12ebc36971f"},
     "__v": 1,
     "categories": [""],
@@ -20,7 +20,7 @@
     "status": true,
     "telegram": "",
     "twitterHandle": ""
-}
+},
 {
     "_id": {"$oid": "61dc4cc7c805ce7c11614717"},
     "__v": 1,
@@ -43,4 +43,4 @@
     "status": true,
     "telegram": "",
     "twitterHandle": ""
-}
+}]

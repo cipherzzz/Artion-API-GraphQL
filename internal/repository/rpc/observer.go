@@ -4,8 +4,9 @@ package rpc
 
 import (
 	"context"
-	"github.com/ethereum/go-ethereum"
 	"time"
+
+	"github.com/ethereum/go-ethereum"
 )
 
 const (

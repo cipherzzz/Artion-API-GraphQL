@@ -1,96 +1,58 @@
-{
-  "_id": "0xa06aecbb8CD9328667f8E05f288e5b3ac1CFf852",
-  "name": "FantomMarketplaceV1",
-  "type": "market",
-  "created": {"$date": {"$numberLong": "1631892689000"}},
-  "block": {"$numberLong":  "17191403"},
-  "trx": "0xacfb0b38df48c7866b5a5e6715e3d5faf2fcfaed8c7da609be3b9feaae2fabab"
-}
-{
-  "_id": "0x793970a6946810Fc1EFb539FA1E7a5b5E894a80e",
-  "name": "FantomMarketplaceV2",
-  "type": "market2",
-  "created": {"$date": {"$numberLong": "1637592223000"}},
-  "block": {"$numberLong":  "22808575"},
-  "trx": "0xb42fa4068d22a85bae9130a2e9ee2b9f80ea20e3552278d3b55df016646e5720"
-}
-{
-  "_id": "0xf824717E5e7cefd7Aa78112Fb7e62dd9422488D3",
-  "name": "FantomMarketplaceV3",
-  "type": "market3",
-  "created": {"$date": {"$numberLong": "1641805208000"}},
-  "block": {"$numberLong":  "27543020"},
-  "trx": "0xd2087b9a06df4948d939649386ab5f8a1df5f5612aafe34e9ea9306989074426"
-}
-{
-  "_id": "0x56aD389A02Ea9d63f13106cB0c161342f537a92e",
-  "name": "FantomBundleMarketplaceV1",
-  "type": "bundle_market",
-  "created": {"$date": {"$numberLong": "1631912199000"}},
-  "block": {"$numberLong":  "17206039"},
-  "trx": "0x0c30dd1975a61924630c4d7cde761c728ed7d7bd9fa354cfcf0afcb5c0d6f827"
-}
-{
-  "_id": "0x4Ae0bB1F6f2997Ecc4abFd473F4BfCD2430BFd65",
-  "name": "FantomBundleMarketplaceV2",
-  "type": "bundle_market2",
-  "created": {"$date": {"$numberLong": "1637592306000"}},
-  "block": {"$numberLong":  "22808681"},
-  "trx": "0x1dd453b6cd78b3ee0630386a4a41a6a76346c297695d2a3c4d6ebab3b32e8eaf"
-}
-{
-  "_id": "0x951Cc69504d39b3eDb155CA99f555E47E044c2F1",
-  "name": "FantomAuctionV1",
-  "type": "auction",
-  "created": {"$date": {"$numberLong": "1631892908000"}},
-  "block": {"$numberLong":  "17191508"},
-  "trx": "0xf17a2742343038a2d5d76e4b086c79240619c8376169d4a7a8a6f01235fbd4f9"
-}
-{
-  "_id": "0x96924B99c2bCa31cD64e3b5bc2C9bbe030E4bF3b",
-  "name": "FantomAuctionV2",
-  "type": "auction2",
-  "created": {"$date": {"$numberLong": "1637592736000"}},
-  "block": {"$numberLong":  "22809204"},
-  "trx": "0x1266ea66e752ab0df1f227a36241248f4891bdac245ddde1eaab1084c1e22937"
-}
-{
-  "_id": "0x8F1E67b35400464d8Bf42284dEfB29b61efBa104",
-  "name": "FantomAuctionV3",
-  "type": "auction3",
-  "created": {"$date": {"$numberLong": "1641805287000"}},
-  "block": {"$numberLong":  "27543115"},
-  "trx": "0xbe9ba968c0259161e00159f80e5de774a083f36f12ee65989b70a3b7e9e67e3a"
-}
-{
-  "_id": "0xcDA452807a531d2CeC178194e7007a6438ED06ef",
-  "name": "FantomTokenRegistry",
-  "type": "token_registry",
-  "created": {"$date": {"$numberLong": "1637650432000"}},
-  "block": {"$numberLong":  "22874510"},
-  "trx": "0x34f6b8867ac461eb231bafaeefb4a68bfbaa39001e40940662c3548ea4b33c90"
-}
-{
-  "_id": "0x8575224D191F8a61F7D720EA00c98100954e0723",
-  "name": "FantomAddressRegistry",
-  "type": "address_registry",
-  "created": {"$date": {"$numberLong": "1637650465000"}},
-  "block": {"$numberLong":  "22874553"},
-  "trx": "0x38315515ce319d82c572001e94985a78f7f956e97b6b33214eea1d8dec2f6ea9"
-}
-{
-  "_id": "0x6fe4d7f4edb88f933b46d4984aa36fde7b4b0e07",
-  "name": "RandomNumberOracle",
-  "type": "rng",
-  "created": {"$date": {"$numberLong": "1634903501000"}},
-  "block": {"$numberLong":  "19756764"},
-  "trx": "0x09e291be0e373692a72f3edc050f0cbae946d764d002ee5b656a334cda3d5b87"
-}
-{
-  "_id": "0x905fD568F43e261554F582817196c5de36331FE5",
-  "name": "RoyaltyRegistry",
-  "type": "royalty_registry",
-  "created": {"$date": {"$numberLong": "1641802076000"}},
-  "block": {"$numberLong":  "27539235"},
-  "trx": "0x7c09ab25ded60ce646622673ee78693dba6d1331d816e08b142ba549c3e0628b"
-}
+[
+  {
+    "_id": "0xa827b98eaDD9c53474739915AAA6eD8D529e7536", 
+    "name": "FantomMarketplaceV1",
+    "type": "market",
+    "created": { "$date": { "$numberLong": "1631892689000" } },
+    "block": { "$numberLong": "17191403" },
+    "trx": "0xacfb0b38df48c7866b5a5e6715e3d5faf2fcfaed8c7da609be3b9feaae2fabab"
+  },
+  {
+    "_id": "0x7983c6C7D8312df5FDC352811a0BBC8d68eCe986",
+    "name": "FantomBundleMarketplaceV1",
+    "type": "bundle_market",
+    "created": { "$date": { "$numberLong": "1631912199000" } },
+    "block": { "$numberLong": "17206039" },
+    "trx": "0x0c30dd1975a61924630c4d7cde761c728ed7d7bd9fa354cfcf0afcb5c0d6f827"
+  },
+  {
+    "_id": "0xE8bf8a9Dc998b36A46777Dd2f752C00149Bff092",
+    "name": "FantomAuctionV1",
+    "type": "auction",
+    "created": { "$date": { "$numberLong": "1631892908000" } },
+    "block": { "$numberLong": "17191508" },
+    "trx": "0xf17a2742343038a2d5d76e4b086c79240619c8376169d4a7a8a6f01235fbd4f9"
+  },
+  {
+    "_id": "0x600D1F8ED05Dc7CC748e37012Bc5a01999Efb069",
+    "name": "FantomTokenRegistry",
+    "type": "token_registry",
+    "created": { "$date": { "$numberLong": "1637650432000" } },
+    "block": { "$numberLong": "22874510" },
+    "trx": "0x34f6b8867ac461eb231bafaeefb4a68bfbaa39001e40940662c3548ea4b33c90"
+  },
+  {
+    "_id": "0xe8eb15A44FfF06e0fCC098e34940db9163A157D1",
+    "name": "FantomAddressRegistry",
+    "type": "address_registry",
+    "created": { "$date": { "$numberLong": "1637650465000" } },
+    "block": { "$numberLong": "22874553" },
+    "trx": "0x38315515ce319d82c572001e94985a78f7f956e97b6b33214eea1d8dec2f6ea9"
+  },
+  {
+    "_id": "0x6fe4d7f4edb88f933b46d4984aa36fde7b4b0e07",
+    "name": "RandomNumberOracle",
+    "type": "rng",
+    "created": { "$date": { "$numberLong": "1634903501000" } },
+    "block": { "$numberLong": "19756764" },
+    "trx": "0x09e291be0e373692a72f3edc050f0cbae946d764d002ee5b656a334cda3d5b87"
+  },
+  {
+    "_id": "0x905fD568F43e261554F582817196c5de36331FE5",
+    "name": "RoyaltyRegistry",
+    "type": "royalty_registry",
+    "created": { "$date": { "$numberLong": "1641802076000" } },
+    "block": { "$numberLong": "27539235" },
+    "trx": "0x7c09ab25ded60ce646622673ee78693dba6d1331d816e08b142ba549c3e0628b"
+  }
+]

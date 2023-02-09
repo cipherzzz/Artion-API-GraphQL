@@ -9,7 +9,7 @@ import (
 )
 
 // nftMetadataWorkerThreads is the number of threads working on NFT metadata updates.
-const nftMetadataWorkerThreads = 100
+const nftMetadataWorkerThreads = 10
 
 // nftMetadataWorker represents a service responsible for processing NFT token metadata
 // update queue from the metadata updater service.

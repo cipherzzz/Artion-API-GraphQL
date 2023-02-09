@@ -5,8 +5,9 @@ import (
 	"artion-api-graphql/internal/types"
 	"bytes"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
 	"math/big"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // addCollectionQueueCapacity is the capacity of the queue being filled with

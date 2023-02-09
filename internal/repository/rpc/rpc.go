@@ -10,12 +10,13 @@ import (
 	"bytes"
 	"embed"
 	"fmt"
+	"sync"
+
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	eth "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	client "github.com/ethereum/go-ethereum/rpc"
-	"sync"
 )
 
 //go:embed contracts/abi/*.json
@@ -53,13 +54,13 @@ type Opera struct {
 	abiMarketplace *abi.ABI
 
 	// contracts
-	auctionContractsProps      map[common.Address]types.AuctionProps
-	auctionContracts           map[common.Address]IAuctionContract
-	marketplaceContracts       map[common.Address]IMarketplaceContract
-	payTokenPriceContract      IMarketplaceContract // for token royalty or pay token price
-	tokenRegistryContract      *contracts.FantomTokenRegistry
-	royaltyRegistryContract    *contracts.FantomRoyaltyRegistry
-	rngFeedContract            *contracts.RandomNumberOracle
+	auctionContractsProps   map[common.Address]types.AuctionProps
+	auctionContracts        map[common.Address]IAuctionContract
+	marketplaceContracts    map[common.Address]IMarketplaceContract
+	payTokenPriceContract   IMarketplaceContract // for token royalty or pay token price
+	tokenRegistryContract   *contracts.FantomTokenRegistry
+	royaltyRegistryContract *contracts.FantomRoyaltyRegistry
+	rngFeedContract         *contracts.RandomNumberOracle
 
 	basicContracts types.Contracts
 }
@@ -176,8 +177,8 @@ func New() *Opera {
 		headers:  make(chan *eth.Header, headerObserverCapacity),
 
 		auctionContractsProps: make(map[common.Address]types.AuctionProps),
-		auctionContracts:     make(map[common.Address]IAuctionContract),
-		marketplaceContracts: make(map[common.Address]IMarketplaceContract),
+		auctionContracts:      make(map[common.Address]IAuctionContract),
+		marketplaceContracts:  make(map[common.Address]IMarketplaceContract),
 	}
 
 	// load and parse ABIs
@@ -196,7 +197,9 @@ func New() *Opera {
 
 // connects opens RPC connection to the Opera node.
 func connect() (*client.Client, error) {
-	c, err := client.Dial(cfg.Node.Url)
+	//c, err := client.Dial(cfg.Node.Url)
+	fmt.Println("cfg.Node.Url", cfg.Node.Url)
+	c, err := client.Dial("https://rpc.ankr.com/fantom_testnet")
 	if err != nil {
 		log.Criticalf("can not connect blockchain node; %s", err.Error())
 		return nil, err

@@ -4,9 +4,10 @@ import (
 	"artion-api-graphql/internal/types"
 	"bytes"
 	"fmt"
+	"math/big"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"math/big"
 )
 
 // tokenPriceDecimalsCorrection represents the value used to reduce 1 token price to stored fixed 6 decimals - 10^12.
@@ -14,7 +15,7 @@ import (
 var tokenPriceDecimalsCorrection = big.NewInt(1_000_000_000_000)
 
 var zeroAddress = common.Address{}
-var wFtmAddress = common.HexToAddress("0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83")
+var wFtmAddress = common.HexToAddress("0xf1277d1Ed8AD466beddF92ef448A132661956621")
 
 // GetUnifiedPrice converts token price in pay-tokens to value in unified units for storing in database.
 func (p *Proxy) GetUnifiedPrice(address common.Address, amount hexutil.Big) (out types.TokenPrice, err error) {
@@ -69,6 +70,9 @@ func (p *Proxy) getPayToken(address *common.Address) (*types.PayToken, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	fmt.Println("list", list, address)
+
 	// replace zero address (native tokens) by wFTM token
 	if bytes.Equal(address.Bytes(), zeroAddress.Bytes()) {
 		address = &wFtmAddress
@@ -78,5 +82,6 @@ func (p *Proxy) getPayToken(address *common.Address) (*types.PayToken, error) {
 			return &payToken, nil
 		}
 	}
+
 	return nil, fmt.Errorf("unknown pay token %s", address)
 }

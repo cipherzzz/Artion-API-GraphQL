@@ -2,10 +2,12 @@ package db
 
 import (
 	"context"
+	"fmt"
+	"strings"
+
 	"github.com/ethereum/go-ethereum/common"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"strings"
 )
 
 const (
@@ -18,6 +20,8 @@ const (
 
 func (sdb *SharedMongoDbBridge) IsModerator(address common.Address) (isMod bool, err error) {
 	col := sdb.client.Database(sdb.dbName).Collection(coModerators)
+
+	fmt.Println("moderators", address, sdb.dbName)
 
 	filter := bson.D{{Key: fiModeratorAddress, Value: strings.ToLower(address.String())}}
 	result := col.FindOne(context.Background(), filter)

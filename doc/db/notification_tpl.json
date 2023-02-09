@@ -1,4 +1,4 @@
-{
+[{
   "_id": {
     "$oid": "000000000000000000000001"
   },
@@ -12,7 +12,7 @@
   "subject": "Baku 2021 Podium Token Burned",
   "recipient": null,
   "params": "{\"prize\":\"Azerbaijan 2021 race-worn helmet AND meet and greet with Pierre over the next 12 months\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000002"
@@ -27,7 +27,7 @@
   "subject": "Brazil 2019 Comeback Token Burned",
   "recipient": null,
   "params": "{\"prize\":\"signed promotion helmet from Brazil 2019 race weekend AND meet and greet with Pierre over the next 12 months\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000003"
@@ -42,7 +42,7 @@
   "subject": "Monza 2020 First Victory Token Burned",
   "recipient": null,
   "params": "{\"prize\":\"VIP experience for two people at a race weekend AND meet and greet with Pierre over the next 12 months AND signed 2021 mini-helmet and merchandising\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000104"
@@ -57,7 +57,7 @@
   "subject": "Pierre Gasly In The Making Token Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000201"
@@ -72,7 +72,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000202"
@@ -87,7 +87,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000203"
@@ -102,7 +102,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000204"
@@ -117,7 +117,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000205"
@@ -132,7 +132,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000206"
@@ -147,7 +147,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000207"
@@ -162,7 +162,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000208"
@@ -177,7 +177,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000000209"
@@ -192,7 +192,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001001"
@@ -207,7 +207,7 @@
   "subject": "Baku 2021 Podium Token Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"Azerbaijan 2021 race-worn helmet AND meet and greet with Pierre over the next 12 months\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001002"
@@ -222,7 +222,7 @@
   "subject": "Brazil 2019 Comeback Token Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"signed promotion helmet from Brazil 2019 race weekend AND meet and greet with Pierre over the next 12 months\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001003"
@@ -237,7 +237,7 @@
   "subject": "Monza 2020 First Victory Token Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"VIP experience for two people at a race weekend AND meet and greet with Pierre over the next 12 months AND signed 2021 mini-helmet and merchandising\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001104"
@@ -252,7 +252,7 @@
   "subject": "Pierre Gasly In The Making Token Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001201"
@@ -267,7 +267,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001202"
@@ -282,7 +282,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001203"
@@ -297,7 +297,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001204"
@@ -312,7 +312,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001205"
@@ -327,7 +327,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001206"
@@ -342,7 +342,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001207"
@@ -357,7 +357,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001208"
@@ -372,7 +372,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000001209"
@@ -387,7 +387,7 @@
   "subject": "Pierre Gasly In The Making Golden Ticket Burned",
   "recipient": "jakub.stepanik@fantom.foundation",
   "params": "{\"prize\":\"numbered limited edition T-shirt celebrating the first NFT drop AND signed mini-helmet in addition to the merchandise (golden ticket)\"}"
-}
+},
 {
   "_id": {
     "$oid": "000000000000000000002001"
@@ -402,7 +402,7 @@
   "subject": "Artion Ticket Burned",
   "recipient": null,
   "params": "{\"prize\":\"no prize\"}"
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000000"
@@ -417,7 +417,7 @@
   "subject": "Your NFT has been burned on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000001"
@@ -432,7 +432,7 @@
   "subject": "Your new NFT is now available on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000016"
@@ -447,7 +447,7 @@
   "subject": "You sold your NFT on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000032"
@@ -462,7 +462,7 @@
   "subject": "You received your purchased NFT on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000257"
@@ -477,7 +477,7 @@
   "subject": "Your new NFT auction is now active on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000002049"
@@ -492,7 +492,7 @@
   "subject": "Your new NFT listing is now active on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000002176"
@@ -507,7 +507,7 @@
   "subject": "Your NFT listing has been canceled on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000769"
@@ -522,7 +522,7 @@
   "subject": "Your NFT auction received a bid on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000896"
@@ -537,7 +537,7 @@
   "subject": "A bid on your Artion NFT auction has been canceled.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000264"
@@ -552,7 +552,7 @@
   "subject": "You received an NFT from an auction on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000000384"
@@ -567,7 +567,7 @@
   "subject": "Artion auction for an NFT has been canceled.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000001025"
@@ -582,7 +582,7 @@
   "subject": "Your NFT token received an offer on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "010000000000000000001152"
@@ -597,7 +597,7 @@
   "subject": "An offer on your NFT token has been canceled on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "020000000000000000034817"
@@ -612,7 +612,7 @@
   "subject": "An user you follow listed an NFT on Artion.",
   "recipient": null,
   "params": null
-}
+},
 {
   "_id": {
     "$oid": "020000000000000000033025"
@@ -628,3 +628,4 @@
   "recipient": null,
   "params": null
 }
+]

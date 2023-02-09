@@ -6,12 +6,13 @@ import (
 	"artion-api-graphql/internal/repository/rpc/contracts"
 	"context"
 	"fmt"
+	"math/big"
+	"strings"
+
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"math/big"
-	"strings"
 )
 
 // defaultMintingTestTokenUrl is the URL we used to test NFT minting calls.
@@ -26,6 +27,7 @@ var defaultMintingTestFee = hexutil.MustDecodeBig("0x8AC7230489E80000")
 func (o *Opera) Erc721StartingBlockNumber(adr *common.Address) (uint64, error) {
 	// instantiate contract
 	erc, err := contracts.NewErc721(*adr, o.ftm)
+	log.Debugf("getting ERC-721 starting block number for %s", adr.String())
 	if err != nil {
 		return 0, err
 	}

@@ -62,9 +62,9 @@ func (mgr *Manager) init() {
 	mgr.nftMetaUpdater.init()
 	mgr.notifyProcessor.init()
 	mgr.collectionValidator.init()
-	mgr.priceUpdater.init()
-	mgr.likesViewsUpdater.init()
-	mgr.banUpdater.init()
+	// mgr.priceUpdater.init()
+	// mgr.likesViewsUpdater.init()
+	// mgr.banUpdater.init()
 }
 
 // add managed service instance to the Manager and run it.
