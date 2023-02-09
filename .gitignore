@@ -20,3 +20,5 @@ vendor/
 
 # Exclude debuging related files
 doc/debug*
+
+config.json
