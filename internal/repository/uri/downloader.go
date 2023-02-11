@@ -8,12 +8,13 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	ipfsapi "github.com/ipfs/go-ipfs-api"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
+
+	ipfsapi "github.com/ipfs/go-ipfs-api"
 )
 
 // ipfsRequestTimeout represents the timeout applied to IPFS requests.
@@ -139,12 +140,18 @@ func (d *Downloader) GetFromIpfsGateway(uri string) (data []byte, mimetype strin
 
 // GetFromHttp downloads the file from HTTP.
 func (d *Downloader) GetFromHttp(uri string) (data []byte, mimetype string, err error) {
-	client := http.Client{
-		Timeout: 1 * time.Minute,
+	client := http.Client{}
+	req, err := http.NewRequest("GET", uri+"?pinataGatewayToken="+d.gatewayBearer, nil)
+	if err != nil {
+		return nil, "", err
 	}
 
-	// call for image
-	resp, err := client.Get(uri)
+	// add access authorization header with pre-shared bearer token
+	// if d.gatewayBearer != "" {
+	// 	req.Header.Set("Authorization", "Bearer "+d.gatewayBearer)
+	// }
+
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, "", fmt.Errorf("request failed; %s", err.Error())
 	}

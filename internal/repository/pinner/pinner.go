@@ -27,7 +27,7 @@ func New(cfg *config.Config) *Pinner {
 		panic("unable to init Pinner - Pinata bearer token not configured")
 	}
 	return &Pinner{
-		pinataBearer: cfg.Ipfs.GatewayBearer,
+		pinataBearer: cfg.Ipfs.PinataJWT,
 	}
 }
 

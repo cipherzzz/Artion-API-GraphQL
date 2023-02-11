@@ -3,8 +3,9 @@ package config
 
 import (
 	"crypto/ecdsa"
-	"github.com/ethereum/go-ethereum/common"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // Config defines configuration options structure for Fantom API server.
@@ -80,8 +81,11 @@ type Ipfs struct {
 	// Gateway to process IPFS requests instead of IPFS node (like Pinata)
 	Gateway string `mapstructure:"gateway"`
 
-	// GatewayBearer represents API key (JWT) to be used for Gateway auth
+	// api key for the custom http/ipfs gateway
 	GatewayBearer string `mapstructure:"gateway_bearer"`
+
+	//Represents API key (JWT) to be used for api auth
+	PinataJWT string `mapstructure:"pinata_jwt"`
 
 	// FileCacheDir is a directory, where can be uploaded files cached
 	FileCacheDir string `mapstructure:"file_cache_dir"`

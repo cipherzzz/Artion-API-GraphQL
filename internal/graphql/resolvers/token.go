@@ -7,12 +7,13 @@ import (
 	"artion-api-graphql/internal/types/sorting"
 	"context"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	"math/big"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 )
 
 // Token object is constructed from query, data from db are loaded on demand into "dbToken" field.
@@ -26,9 +27,9 @@ type TokenEdge struct {
 
 // TokenConnection represents scrollable tokens list connector.
 type TokenConnection struct {
-	Edges      []TokenEdge
-	PageInfo   PageInfo
-	filter     *types.TokenFilter
+	Edges    []TokenEdge
+	PageInfo PageInfo
+	filter   *types.TokenFilter
 }
 
 // NewToken creates a new instance of the resolvable Token.
@@ -90,7 +91,7 @@ func (t *Token) Image() *string {
 		return nil
 	}
 	if strings.HasPrefix(t.ImageURI, "ipfs://") {
-		uri := "https://artion.mypinata.cloud/ipfs/" + t.ImageURI[7:]
+		uri := "https://cipherz.mypinata.cloud/ipfs/" + t.ImageURI[7:]
 		return &uri
 	}
 	return &t.ImageURI
