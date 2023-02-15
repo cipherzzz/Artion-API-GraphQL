@@ -75,6 +75,18 @@ type Query {
 
     # List tokens which was banned by a moderator. (moderators only)
     bannedTokens(first: Int, after: Cursor, last: Int, before: Cursor): BannedNftConnection!
+
+    # Latest Nonce of the logged user.
+    account(address: Address!): Account!
+
+    # Get the balance of an account's ERC20 token.
+    ercTokenBalance(contract: Address!, account: Address!): TokenBalance!
+
+    # Get the current gas price
+    gasPrice(): GasPrice!
+
+    # Estimate Gas for a transaction
+    estimateGas(to: Address!, from: Address!, value: BigInt!, data: String!): GasEstimate!
 }
 
 # Mutation endpoints for modifying the data
