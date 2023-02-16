@@ -84,7 +84,9 @@ var defCorsAllowOrigins = []string{"*"}
 func applyDefaults(cfg *viper.Viper) {
 	// set simple details
 	cfg.SetDefault(keyAppName, defApplicationName)
-	cfg.SetDefault(keyBindAddress, defServerBind)
+
+	port := os.Getenv("PORT")
+	cfg.SetDefault(keyBindAddress, "0.0.0.0:"+port)
 	cfg.SetDefault(keyLoggingLevel, defLoggingLevel)
 	cfg.SetDefault(keyLoggingFormat, defLoggingFormat)
 	cfg.SetDefault(keyLachesisUrl, getEnv(envLachesisUrl, defLachesisUrl))

@@ -11,6 +11,7 @@ const (
 
 	// server related keys
 	keyBindAddress      = "server.bind"
+	envBindAddress      = "SERVER_BIND"
 	keyApiStateOrigin   = "server.origin"
 	keyCorsAllowOrigins = "server.cors_origins"
 
