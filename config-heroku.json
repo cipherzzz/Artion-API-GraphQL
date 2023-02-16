@@ -1,0 +1,41 @@
+{
+  "server": {
+    "bind": "0.0.0.0:7373",
+    "cors": [
+      "*"
+    ],
+    "write_timeout": 30,
+    "resolver_timeout": 240
+  },
+  "log": {
+    "level": "Info"
+  },
+  "node": {
+    "url": ""
+  },
+  "db": {
+    "url": "",
+    "db": "artion"
+  },
+  "shared_db": {
+    "url": "",
+    "db": "artionshared"
+  },
+  "ipfs": {
+    "gateway": "",
+    "gateway_bearer": "",
+    "pinata_jwt": "",
+    "skip_http_gateways": true,
+    "file_cache_dir": "/tmp/artion/"
+  },
+    "auth": {
+    "bearer_secret": "",
+    "nonce_secret": ""
+  },
+  "notification": {
+    "sendgrid": {
+      "domain": "",
+      "key": ""
+    }
+  }
+}

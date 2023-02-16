@@ -1,1 +1,1 @@
-web: bin/artionapi -cfg config.json
+web: bin/artionapi -cfg config-heroku.json
