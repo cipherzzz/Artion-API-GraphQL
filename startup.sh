@@ -1,1 +1,1 @@
-./build/artionapi -cfg config.json
+./build/artionapi -cfg config-heroku.json

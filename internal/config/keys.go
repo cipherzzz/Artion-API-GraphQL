@@ -28,13 +28,24 @@ const (
 
 	// node connection related options
 	keyLachesisUrl = "node.url"
+	envLachesisUrl = "NODE_URL"
 
 	// IPFS node connection related options
-	keyIpfsUrl          = "ipfs.url"
-	keySkipHttpGateways = "ipfs.skip_http_gateways"
+	keyIpfsUrl           = "ipfs.url"
+	envIpfsUrl           = "IPFS_URL"
+	keySkipHttpGateways  = "ipfs.skip_http_gateways"
+	keyIpfsGateway       = "ipfs.gateway"
+	envIpfsGateway       = "IPFS_GATEWAY"
+	keyIpfsGatewayBearer = "ipfs.gateway_bearer"
+	envIpfsGatewayBearer = "IPFS_GATEWAY_BEARER"
+	keyPinataJwt         = "ipfs.pinata_jwt"
+	envPinataJwt         = "IPFS_PINATA_JWT"
+	keyIpfsFileCacheDir  = "ipfs.file_cache_dir"
+	envIpfsFileCacheDir  = "IPFS_FILE_CACHE_DIR"
 
 	// off-chain database related options
 	keyMongoUrl      = "db.url"
+	envMongoUrl      = "DB_URL"
 	keyMongoDatabase = "db.db"
 
 	keySharedMongoUrl      = "shared_db.url"
@@ -46,7 +57,9 @@ const (
 
 	// authentication related options
 	keyAuthBearerSecret = "auth.bearer_secret"
+	envAuthBearerSecret = "AUTH_BEARER_SECRET"
 	keyAuthNonceSecret  = "auth.nonce_secret"
+	envAuthNonceSecret  = "AUTH_NONCE_SECRET"
 
 	// mandatory contracts
 	keyWrappedFTM = "contracts.wftm"

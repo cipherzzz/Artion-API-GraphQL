@@ -4,12 +4,13 @@ import (
 	"crypto/ecdsa"
 	"flag"
 	"fmt"
+	"log"
+	"reflect"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/mitchellh/mapstructure"
 	"github.com/spf13/viper"
-	"log"
-	"reflect"
 )
 
 // Load provides a loaded configuration for Fantom API server.

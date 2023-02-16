@@ -1,8 +1,10 @@
 package config
 
 import (
+	"os"
 	"time"
 
+	"github.com/ethereum/go-ethereum/log"
 	"github.com/spf13/viper"
 )
 
@@ -38,6 +40,8 @@ const (
 
 	// defIpfsUrl holds default IPFS connection string
 	defIpfsUrl = "localhost:5001"
+
+	defIpfsFileCacheDir = "/tmp/artion/"
 
 	// defSkipHttpGateways tells whether to skip known HTTP-to-IPFS gateways
 	defSkipHttpGateways = true
@@ -83,12 +87,18 @@ func applyDefaults(cfg *viper.Viper) {
 	cfg.SetDefault(keyBindAddress, defServerBind)
 	cfg.SetDefault(keyLoggingLevel, defLoggingLevel)
 	cfg.SetDefault(keyLoggingFormat, defLoggingFormat)
-	cfg.SetDefault(keyLachesisUrl, defLachesisUrl)
-	cfg.SetDefault(keyIpfsUrl, defIpfsUrl)
+	cfg.SetDefault(keyLachesisUrl, getEnv(envLachesisUrl, defLachesisUrl))
+	cfg.SetDefault(keyIpfsUrl, getEnv(envIpfsUrl, defIpfsUrl))
 	cfg.SetDefault(keySkipHttpGateways, defSkipHttpGateways)
-	cfg.SetDefault(keyMongoUrl, defMongoUrl)
+
+	cfg.SetDefault(keyIpfsGateway, getEnv(envIpfsGateway, ""))
+	cfg.SetDefault(keyIpfsGatewayBearer, getEnv(envIpfsGatewayBearer, ""))
+	cfg.SetDefault(keyPinataJwt, getEnv(envPinataJwt, ""))
+	cfg.SetDefault(keyIpfsFileCacheDir, getEnv(envIpfsFileCacheDir, defIpfsFileCacheDir))
+
+	cfg.SetDefault(keyMongoUrl, getEnv(envMongoUrl, defMongoUrl))
 	cfg.SetDefault(keyMongoDatabase, defMongoDatabase)
-	cfg.SetDefault(keySharedMongoUrl, defSharedMongoUrl)
+	cfg.SetDefault(keySharedMongoUrl, getEnv(envMongoUrl, defMongoUrl))
 	cfg.SetDefault(keySharedMongoDatabase, defSharedMongoDatabase)
 	cfg.SetDefault(keyApiStateOrigin, defApiStateOrigin)
 
@@ -108,9 +118,18 @@ func applyDefaults(cfg *viper.Viper) {
 	cfg.SetDefault(keyCorsAllowOrigins, defCorsAllowOrigins)
 
 	// auth
-	cfg.SetDefault(keyAuthBearerSecret, defAuthBearerSecret)
-	cfg.SetDefault(keyAuthNonceSecret, defAuthNonceSecret)
+	cfg.SetDefault(keyAuthBearerSecret, getEnv(envAuthBearerSecret, defAuthBearerSecret))
+	cfg.SetDefault(keyAuthNonceSecret, getEnv(envAuthNonceSecret, defAuthNonceSecret))
 
 	// contracts
 	cfg.SetDefault(keyWrappedFTM, defWrappedFTMContract)
+}
+
+func getEnv(key, fallback string) string {
+	value := os.Getenv(key)
+	log.Debug("getEnv", "key", key, "value", value)
+	if len(value) == 0 {
+		return fallback
+	}
+	return value
 }
