@@ -87,6 +87,9 @@ type Query {
 
     # Estimate Gas for a transaction
     estimateGas(to: Address!, from: Address!, value: BigInt!, data: String!): GasEstimate!
+
+    # Status of Transaction
+    transactionPending(hash: String!): Boolean!
 }
 
 # Mutation endpoints for modifying the data

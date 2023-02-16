@@ -12,3 +12,5 @@ scalar Address
 
 # Long is 64bits unsigned integer, represented as 0x prefixed hexadecimal number in string.
 scalar Long
+
+scalar Hash

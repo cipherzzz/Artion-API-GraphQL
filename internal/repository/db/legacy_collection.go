@@ -4,13 +4,14 @@ import (
 	"artion-api-graphql/internal/types"
 	"artion-api-graphql/internal/types/sorting"
 	"context"
+	"strings"
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"strings"
-	"time"
 )
 
 const (
@@ -20,33 +21,33 @@ const (
 	// fiCollectionAddress is the name of the field keeping the NFT contract address.
 	fiLegacyCollectionAddress = "erc721Address"
 
-	fiLegacyCollectionName = "collectionName"
-	fiLegacyCollectionDescription = "description"
-	fiLegacyCollectionCategoriesStr = "categories"
-	fiLegacyCollectionImage = "logoImageHash"
-	fiLegacyCollectionOwner = "owner"
-	fiLegacyCollectionFeeRecipient = "feeRecipient"
-	fiLegacyCollectionRoyaltyValue = "royalty"
-	fiLegacyCollectionDiscord = "discord"
-	fiLegacyCollectionEmail = "email"
-	fiLegacyCollectionTelegram = "telegram"
-	fiLegacyCollectionSiteUrl = "siteUrl"
-	fiLegacyCollectionMediumHandle = "mediumHandle"
-	fiLegacyCollectionTwitterHandle = "twitterHandle"
-	fiLegacyCollectionInstagramHandle = "instagramHandle"
-	fiLegacyCollectionIsAppropriate = "isAppropriate"
+	fiLegacyCollectionName              = "collectionName"
+	fiLegacyCollectionDescription       = "description"
+	fiLegacyCollectionCategoriesStr     = "categories"
+	fiLegacyCollectionImage             = "logoImageHash"
+	fiLegacyCollectionOwner             = "owner"
+	fiLegacyCollectionFeeRecipient      = "feeRecipient"
+	fiLegacyCollectionRoyaltyValue      = "royalty"
+	fiLegacyCollectionDiscord           = "discord"
+	fiLegacyCollectionEmail             = "email"
+	fiLegacyCollectionTelegram          = "telegram"
+	fiLegacyCollectionSiteUrl           = "siteUrl"
+	fiLegacyCollectionMediumHandle      = "mediumHandle"
+	fiLegacyCollectionTwitterHandle     = "twitterHandle"
+	fiLegacyCollectionInstagramHandle   = "instagramHandle"
+	fiLegacyCollectionIsAppropriate     = "isAppropriate"
 	fiLegacyCollectionAppropriateUpdate = "appropriateUpdate"
-	fiLegacyCollectionIsInternal  = "isInternal"
-	fiLegacyCollectionIsOwnerOnly = "isOwnerble"
-	fiLegacyCollectionIsVerified  = "isVerified"
-	fiLegacyCollectionIsReviewed = "status"
+	fiLegacyCollectionIsInternal        = "isInternal"
+	fiLegacyCollectionIsOwnerOnly       = "isOwnerble"
+	fiLegacyCollectionIsVerified        = "isVerified"
+	fiLegacyCollectionIsReviewed        = "status"
 )
 
 func (sdb *SharedMongoDbBridge) GetLegacyCollection(address common.Address) (collection *types.LegacyCollection, err error) {
 	col := sdb.client.Database(sdb.dbName).Collection(coLegacyCollection)
 	ctx := context.Background()
 	filter := bson.D{
-		{ Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String()) },
+		{Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String())},
 	}
 	result := col.FindOne(ctx, filter)
 
@@ -104,14 +105,14 @@ func (sdb *SharedMongoDbBridge) ApproveCollection(address common.Address) error 
 	if _, err := col.UpdateOne(
 		context.Background(),
 		bson.D{
-			{ Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String()) },
-			{ Key: fiLegacyCollectionIsReviewed, Value: false },
+			{Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String())},
+			{Key: fiLegacyCollectionIsReviewed, Value: false},
 		},
 		bson.D{
 			{Key: "$set", Value: bson.D{
-				{ Key: fiLegacyCollectionIsAppropriate, Value: true },
-				{ Key: fiLegacyCollectionIsReviewed, Value: true },
-				{ Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now() },
+				{Key: fiLegacyCollectionIsAppropriate, Value: true},
+				{Key: fiLegacyCollectionIsReviewed, Value: true},
+				{Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now()},
 			}},
 		},
 	); err != nil {
@@ -127,8 +128,8 @@ func (sdb *SharedMongoDbBridge) DeclineCollection(address common.Address) error 
 	if _, err := col.DeleteOne(
 		context.Background(),
 		bson.D{
-			{ Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String()) },
-			{ Key: fiLegacyCollectionIsReviewed, Value: false },
+			{Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String())},
+			{Key: fiLegacyCollectionIsReviewed, Value: false},
 		},
 	); err != nil {
 		log.Errorf("can not remove declined LegacyCollection; %s", err)
@@ -143,14 +144,14 @@ func (sdb *SharedMongoDbBridge) BanCollection(address common.Address) error {
 	if _, err := col.UpdateOne(
 		context.Background(),
 		bson.D{
-			{ Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String()) },
-			{ Key: fiLegacyCollectionIsReviewed, Value: true },
-			{ Key: fiLegacyCollectionIsAppropriate, Value: true },
+			{Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String())},
+			{Key: fiLegacyCollectionIsReviewed, Value: true},
+			{Key: fiLegacyCollectionIsAppropriate, Value: true},
 		},
 		bson.D{
 			{Key: "$set", Value: bson.D{
-				{ Key: fiLegacyCollectionIsAppropriate, Value: false },
-				{ Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now() },
+				{Key: fiLegacyCollectionIsAppropriate, Value: false},
+				{Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now()},
 			}},
 		},
 	); err != nil {
@@ -166,14 +167,14 @@ func (sdb *SharedMongoDbBridge) UnbanCollection(address common.Address) error {
 	if _, err := col.UpdateOne(
 		context.Background(),
 		bson.D{
-			{ Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String()) },
-			{ Key: fiLegacyCollectionIsReviewed, Value: true },
-			{ Key: fiLegacyCollectionIsAppropriate, Value: false },
+			{Key: fiLegacyCollectionAddress, Value: strings.ToLower(address.String())},
+			{Key: fiLegacyCollectionIsReviewed, Value: true},
+			{Key: fiLegacyCollectionIsAppropriate, Value: false},
 		},
 		bson.D{
 			{Key: "$set", Value: bson.D{
-				{ Key: fiLegacyCollectionIsAppropriate, Value: true },
-				{ Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now() },
+				{Key: fiLegacyCollectionIsAppropriate, Value: true},
+				{Key: fiLegacyCollectionAppropriateUpdate, Value: time.Now()},
 			}},
 		},
 	); err != nil {
@@ -256,13 +257,19 @@ func (sdb *SharedMongoDbBridge) ListLegacyCollections(collectionFilter types.Col
 			Options: "i",
 		}})
 	}
+
+	log.Debugf("****************")
+	log.Debugf("%s", collectionFilter)
+
 	if collectionFilter.MintableBy != nil {
 		filter = append(filter, bson.E{Key: fiLegacyCollectionIsInternal, Value: true})
 		filter = append(filter, bson.E{Key: "$or", Value: bson.A{
-			bson.D{{Key: fiLegacyCollectionIsOwnerOnly, Value: false }},
-			bson.D{{Key: fiLegacyCollectionOwner, Value: *collectionFilter.MintableBy }},
+			bson.D{{Key: fiLegacyCollectionIsOwnerOnly, Value: false}},
+			bson.D{{Key: fiLegacyCollectionOwner, Value: *collectionFilter.MintableBy}},
 		}})
 	}
+
+	log.Criticalf("%s", filter)
 
 	list.TotalCount, err = db.getTotalCount(col, filter)
 	if err != nil {
