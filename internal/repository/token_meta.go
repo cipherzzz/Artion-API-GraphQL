@@ -96,7 +96,7 @@ func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Image) 
 		return "", fmt.Errorf("uploading token image failed; %s", err)
 	}
 
-	imageUri := "https://cipherz.mypinata.cloud/ipfs/" + cid
+	imageUri := "https://artion.mypinata.cloud/ipfs/" + cid
 	metadata.Image = &imageUri
 
 	data, err := json.Marshal(metadata)
@@ -108,7 +108,7 @@ func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Image) 
 	if err != nil {
 		return "", fmt.Errorf("uploading token meta failed; %s", err)
 	}
-	return "https://cipherz.mypinata.cloud/ipfs/" + cid, nil
+	return "https://artion.mypinata.cloud/ipfs/" + cid, nil
 }
 
 // pinFile requests pinning of the given file generating IPFS CID of the stored file.
@@ -151,6 +151,9 @@ func getCidFromIpfsUri(uri string) string {
 
 // getFileFromUri resolves the URI and download file from the URI using appropriate protocol
 func (p *Proxy) getFileFromUri(uri string) (data []byte, mimetype string, err error) {
+
+	log.Warning("getFileFromUri: ", uri)
+
 	// the URI contains the data directly as BASE64 encoded data stream
 	if strings.HasPrefix(uri, "data:") {
 		return p.uri.GetFromDataUri(uri)

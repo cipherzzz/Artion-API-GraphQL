@@ -91,7 +91,7 @@ func (t *Token) Image() *string {
 		return nil
 	}
 	if strings.HasPrefix(t.ImageURI, "ipfs://") {
-		uri := "https://cipherz.mypinata.cloud/ipfs/" + t.ImageURI[7:]
+		uri := "https://artion.mypinata.cloud/ipfs/" + t.ImageURI[7:]
 		return &uri
 	}
 	return &t.ImageURI
