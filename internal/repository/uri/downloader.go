@@ -141,6 +141,7 @@ func (d *Downloader) GetFromIpfsGateway(uri string) (data []byte, mimetype strin
 // GetFromHttp downloads the file from HTTP.
 func (d *Downloader) GetFromHttp(uri string) (data []byte, mimetype string, err error) {
 	client := http.Client{}
+	d.log.Debug("Downloading from HTTP: ", uri+"?pinataGatewayToken="+d.gatewayBearer)
 	req, err := http.NewRequest("GET", uri+"?pinataGatewayToken="+d.gatewayBearer, nil)
 	if err != nil {
 		return nil, "", err
