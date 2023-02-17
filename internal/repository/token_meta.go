@@ -96,7 +96,7 @@ func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Image) 
 		return "", fmt.Errorf("uploading token image failed; %s", err)
 	}
 
-	imageUri := "https://artion.mypinata.cloud/ipfs/" + cid
+	imageUri := "https://cipherz.mypinata.cloud/ipfs/" + cid
 	metadata.Image = &imageUri
 
 	data, err := json.Marshal(metadata)
@@ -108,7 +108,7 @@ func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Image) 
 	if err != nil {
 		return "", fmt.Errorf("uploading token meta failed; %s", err)
 	}
-	return "https://artion.mypinata.cloud/ipfs/" + cid, nil
+	return "https://cipherz.mypinata.cloud/ipfs/" + cid, nil
 }
 
 // pinFile requests pinning of the given file generating IPFS CID of the stored file.
