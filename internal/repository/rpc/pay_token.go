@@ -20,7 +20,7 @@ func (o *Opera) ListPayTokens() (payTokens []types.PayToken, err error) {
 	// 	return nil, err
 	// }
 
-	addresses := []string{"0xf1277d1Ed8AD466beddF92ef448A132661956621", "0xEdE59D58d9B8061Ff7D22E629AB2afa01af496f4", "0x25C60d33451CD01350737F7809025DE5c2E10484"}
+	addresses := []string{"0xf1277d1Ed8AD466beddF92ef448A132661956621", "0x9Ee2EB7A843Af33BEAc5e669B50fd89873713520", "0x25b53190d995D0dE2Ba7DC15979767d791F5d995"}
 
 	for _, address := range addresses {
 		payToken, err := o.getPayToken(common.HexToAddress(address))
