@@ -2,8 +2,9 @@
 package svc
 
 import (
-	eth "github.com/ethereum/go-ethereum/core/types"
 	"time"
+
+	eth "github.com/ethereum/go-ethereum/core/types"
 )
 
 const (
@@ -20,7 +21,7 @@ const (
 	idleTickFrequency = 1 * time.Second
 
 	// topUpdateTickFrequency is the time delay for the block head update
-	topUpdateTickFrequency = 5 * time.Second
+	topUpdateTickFrequency = 30 * time.Second
 
 	// blockQueueCapacity represents the capacity of block headers processor queue
 	blockQueueCapacity = 5000

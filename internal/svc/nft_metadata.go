@@ -11,7 +11,7 @@ const (
 	nftMetadataWorkerQueueCapacity = 250
 
 	// nftMetadataRefreshTick is the tick used to queue NFT metadata refresh candidates.
-	nftMetadataRefreshTick = 20 * time.Second
+	nftMetadataRefreshTick = 30 * time.Second
 
 	// nftMetadataRefreshPullTick is the tick used to pull NFT metadata refresh candidates.
 	nftMetadataRefreshPullTick = 200 * time.Millisecond
