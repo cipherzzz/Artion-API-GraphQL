@@ -151,6 +151,12 @@ func (mwt *nftMetadataWorkerThread) update(tok *types.Token) {
 	if md.Image != nil {
 		tok.ImageURI = strings.TrimSpace(*md.Image)
 	}
+	if md.Animation != nil {
+		tok.AnimationURI = strings.TrimSpace(*md.Animation)
+	}
+	if md.External != nil {
+		tok.ExternalURI = strings.TrimSpace(*md.External)
+	}
 	if md.Properties.Symbol != nil {
 		tok.Symbol = *md.Properties.Symbol
 	}

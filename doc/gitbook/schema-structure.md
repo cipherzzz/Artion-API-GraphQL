@@ -1026,6 +1026,12 @@ type Token {
     # MIME type of the token image
     imageMimetype: String
 
+    # URL of external assets
+    external: String
+
+    # URL of the token animation (IPFS-HTTP proxy for IPFS uris)
+    animation: String
+
     # Time when was the token created on chain.
     created: Time!
 

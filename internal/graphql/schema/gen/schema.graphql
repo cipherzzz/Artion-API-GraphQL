@@ -584,6 +584,10 @@ type Token {
     # MIME type of the token image
     imageMimetype: String
 
+    external: String
+
+    animation: String
+
     # Time when was the token created on chain.
     created: Time!
 

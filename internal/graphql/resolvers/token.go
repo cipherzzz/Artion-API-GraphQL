@@ -97,6 +97,30 @@ func (t *Token) Image() *string {
 	return &t.ImageURI
 }
 
+// Image resolves URI of the token image.
+func (t *Token) External() *string {
+	if t.ExternalURI == "" {
+		return nil
+	}
+	if strings.HasPrefix(t.ExternalURI, "ipfs://") {
+		uri := "https://artion.mypinata.cloud/ipfs/" + t.ExternalURI[7:]
+		return &uri
+	}
+	return &t.ExternalURI
+}
+
+// Image resolves URI of the token image.
+func (t *Token) Animation() *string {
+	if t.AnimationURI == "" {
+		return nil
+	}
+	if strings.HasPrefix(t.AnimationURI, "ipfs://") {
+		uri := "https://artion.mypinata.cloud/ipfs/" + t.AnimationURI[7:]
+		return &uri
+	}
+	return &t.AnimationURI
+}
+
 // ImageMimetype resolves mimetype of the token image.
 func (t *Token) ImageMimetype() *string {
 	if t.ImageURI == "" || t.ImageType == types.ImageTypeUnknown {

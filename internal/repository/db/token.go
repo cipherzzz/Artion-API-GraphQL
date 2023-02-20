@@ -5,15 +5,16 @@ import (
 	"artion-api-graphql/internal/types/sorting"
 	"context"
 	"fmt"
+	"math/big"
+	"strings"
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"math/big"
-	"strings"
-	"time"
 )
 
 const (
@@ -52,6 +53,12 @@ const (
 
 	// fiTokenImageType is the column storing type of the image of the NFT token.
 	fiTokenImageType = "image_type"
+
+	// fiTokenExternalURI is the column storing the external resources of the NFT token.
+	fiTokenExternalURI = "external_uri"
+
+	// fiTokenAnimationURI is the column storing the animation uri of the NFT token.
+	fiTokenAnimationURI = "animation_uri"
 
 	// fiTokenCreatedBy is the column marking creator of the token.
 	fiTokenCreatedBy = "created_by"
@@ -242,18 +249,20 @@ func (db *MongoDbBridge) UpdateTokenMetadata(nft *types.Token) error {
 	}
 
 	return db.UpdateToken(&nft.Contract, (*big.Int)(&nft.TokenId), bson.M{
-		fiTokenName: nft.Name,
-		fiTokenDescription: nft.Description,
-		fiTokenImageURI: nft.ImageURI,
-		fiTokenImageType: nft.ImageType,
-		fiTokenIpRights: nft.IpRights,
-		fiTokenSymbol: nft.Symbol,
-		fiTokenCategories: nft.Categories,
-		fiTokenRoyalty: nft.Royalty,
-		fiTokenFeeRecipient: nft.FeeRecipient,
-		fiTokenMetadataUpdate: nft.MetaUpdate,
+		fiTokenName:                   nft.Name,
+		fiTokenDescription:            nft.Description,
+		fiTokenImageURI:               nft.ImageURI,
+		fiTokenImageType:              nft.ImageType,
+		fiTokenAnimationURI:           nft.AnimationURI,
+		fiTokenExternalURI:            nft.ExternalURI,
+		fiTokenIpRights:               nft.IpRights,
+		fiTokenSymbol:                 nft.Symbol,
+		fiTokenCategories:             nft.Categories,
+		fiTokenRoyalty:                nft.Royalty,
+		fiTokenFeeRecipient:           nft.FeeRecipient,
+		fiTokenMetadataUpdate:         nft.MetaUpdate,
 		fiTokenMetadataUpdateFailures: nft.MetaFailures,
-		fiTokenIsActive: nft.IsActive,
+		fiTokenIsActive:               nft.IsActive,
 	})
 }
 
@@ -264,7 +273,7 @@ func (db *MongoDbBridge) UpdateTokenMetadataRefreshSchedule(nft *types.Token) er
 	}
 
 	return db.UpdateToken(&nft.Contract, (*big.Int)(&nft.TokenId), bson.M{
-		fiTokenMetadataUpdate: nft.MetaUpdate,
+		fiTokenMetadataUpdate:         nft.MetaUpdate,
 		fiTokenMetadataUpdateFailures: nft.MetaFailures,
 	})
 }
@@ -282,8 +291,8 @@ func (db *MongoDbBridge) TokenMarkOffered(contract common.Address, tokenID hexut
 	}
 
 	return db.updateTokenAndRecalcPrice(t, bson.M{
-		fiTokenLastOffer: *ts,
-		fiTokenHasOfferUntil: db.OpenOfferUntil(&contract, tokenID.ToInt()),
+		fiTokenLastOffer:       *ts,
+		fiTokenHasOfferUntil:   db.OpenOfferUntil(&contract, tokenID.ToInt()),
 		fiTokenAmountLastOffer: price,
 	}, priceCalc)
 }
@@ -303,9 +312,9 @@ func (db *MongoDbBridge) TokenMarkListed(contract common.Address, tokenID hexuti
 	t.HasListingSince = db.OpenListingSince(&contract, tokenID.ToInt())
 
 	return db.updateTokenAndRecalcPrice(t, bson.M{
-		fiTokenLastListing: *ts,
+		fiTokenLastListing:     *ts,
 		fiTokenHasListingSince: t.HasListingSince,
-		fiTokenAmountLastList: price,
+		fiTokenAmountLastList:  price,
 	}, priceCalc)
 }
 
@@ -323,11 +332,11 @@ func (db *MongoDbBridge) TokenMarkAuctioned(contract common.Address, tokenID hex
 
 	auctionSince, auctionUntil := db.OpenAuctionRange(&contract, tokenID.ToInt())
 	return db.updateTokenAndRecalcPrice(t, bson.M{
-		fiTokenLastAuction: *ts,
+		fiTokenLastAuction:     *ts,
 		fiTokenHasAuctionSince: auctionSince,
 		fiTokenHasAuctionUntil: auctionUntil,
-		fiTokenHasBids: false,
-		fiTokenReservePrice: reservePrice,
+		fiTokenHasBids:         false,
+		fiTokenReservePrice:    reservePrice,
 	}, priceCalc)
 }
 
@@ -344,9 +353,9 @@ func (db *MongoDbBridge) TokenMarkBid(contract common.Address, tokenID hexutil.B
 	}
 
 	return db.updateTokenAndRecalcPrice(t, bson.M{
-		fiTokenHasBids: true,
+		fiTokenHasBids:       true,
 		fiTokenAmountLastBid: bidPrice,
-		fiTokenLastBid: ts,
+		fiTokenLastBid:       ts,
 	}, priceCalc)
 }
 
@@ -404,7 +413,7 @@ func (db *MongoDbBridge) TokenMarkUnAuctioned(contract common.Address, tokenID h
 	return db.updateTokenAndRecalcPrice(t, bson.M{
 		fiTokenHasAuctionSince: hasAuctionSince,
 		fiTokenHasAuctionUntil: hasAuctionUntil,
-		fiTokenHasBids: false,
+		fiTokenHasBids:         false,
 	}, priceCalc)
 }
 
@@ -447,13 +456,13 @@ func (db *MongoDbBridge) TokenMarkSold(contract common.Address, tokenID hexutil.
 	}
 
 	return db.updateTokenAndRecalcPrice(t, bson.M{
-		fiTokenLastTrade: t.LastTrade,
+		fiTokenLastTrade:       t.LastTrade,
 		fiTokenAmountLastTrade: t.AmountLastTrade,
 		fiTokenHasListingSince: t.HasListingSince,
-		fiTokenHasOfferUntil: t.HasOfferUntil,
+		fiTokenHasOfferUntil:   t.HasOfferUntil,
 		fiTokenHasAuctionSince: t.HasAuctionSince,
 		fiTokenHasAuctionUntil: t.HasAuctionUntil,
-		fiTokenHasBids: false,
+		fiTokenHasBids:         false,
 	}, priceCalc)
 }
 
@@ -523,11 +532,11 @@ func (db *MongoDbBridge) TokenPriceRefreshSet(setSize int) ([]*types.Token, erro
 	// load the set of expired prices (price changes because of timed event like end of auction)
 	count, err := db.addTokensIntoRefreshSet(
 		bson.M{
-			fiTokenPriceValid: bson.M{ "$lt": now },
+			fiTokenPriceValid: bson.M{"$lt": now},
 		},
 		options.Find().SetSort(bson.D{{Key: fiTokenPriceValid, Value: 1}}).SetLimit(int64(setSize)),
 		list,
-		)
+	)
 	if err != nil {
 		log.Errorf("failed to list invalid prices tokens; %s", err.Error())
 		return nil, err
@@ -537,12 +546,12 @@ func (db *MongoDbBridge) TokenPriceRefreshSet(setSize int) ([]*types.Token, erro
 	count2 := 0
 	if count < setSize {
 		count2, err = db.addTokensIntoRefreshSet(
-			bson.M{	"$or": bson.A{
-				bson.M{	fiTokenPriceValid: bson.M{ "$gte": now } },
-				bson.M{	fiTokenPriceValid: bson.M{ "$type": 10 } },
-				},
+			bson.M{"$or": bson.A{
+				bson.M{fiTokenPriceValid: bson.M{"$gte": now}},
+				bson.M{fiTokenPriceValid: bson.M{"$type": 10}},
 			},
-			options.Find().SetSort(bson.D{{Key: fiTokenPriceUpdate, Value: 1}}).SetLimit(int64(setSize - count)),
+			},
+			options.Find().SetSort(bson.D{{Key: fiTokenPriceUpdate, Value: 1}}).SetLimit(int64(setSize-count)),
 			list[count:],
 		)
 		if err != nil {
@@ -653,14 +662,14 @@ func (db *MongoDbBridge) getTokenPriceUpdate(t *types.Token, priceCalc types.Pri
 	}
 
 	return bson.M{
-		fiTokenMinListPrice: minListPrice,
-		fiTokenMaxOfferPrice: maxOfferPrice,
-		fiTokenAmountLastBid: bidPrice,
-		fiTokenReservePrice: reservePrice,
+		fiTokenMinListPrice:    minListPrice,
+		fiTokenMaxOfferPrice:   maxOfferPrice,
+		fiTokenAmountLastBid:   bidPrice,
+		fiTokenReservePrice:    reservePrice,
 		fiTokenAmountLastTrade: lastTradePrice,
-		fiTokenPrice: tokenPrice.Usd,
-		fiTokenPriceValid: priceValidity,
-		fiTokenPriceUpdate: time.Now(),
+		fiTokenPrice:           tokenPrice.Usd,
+		fiTokenPriceValid:      priceValidity,
+		fiTokenPriceUpdate:     time.Now(),
 	}, nil
 }
 

@@ -3,12 +3,13 @@ package types
 
 import (
 	"crypto/sha256"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"math/big"
 	"math/rand"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 const (
@@ -36,6 +37,8 @@ type Token struct {
 	IpRights     string         `bson:"ip_rights"`
 	ImageURI     string         `bson:"image"`
 	ImageType    ImageType      `bson:"image_type"`
+	AnimationURI string         `bson:"animation_uri"`
+	ExternalURI  string         `bson:"external_uri"`
 	Created      Time           `bson:"created"`
 	CreatedBy    common.Address `bson:"created_by"`
 
