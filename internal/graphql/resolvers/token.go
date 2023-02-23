@@ -123,7 +123,7 @@ func (t *Token) Animation() *string {
 
 // ImageMimetype resolves mimetype of the token image.
 func (t *Token) ImageMimetype() *string {
-	if t.ImageURI == "" || t.ImageType == types.ImageTypeUnknown {
+	if t.ImageURI == "" || t.ImageType == types.MediaTypeUnknown {
 		return nil
 	}
 	mimetype := t.ImageType.Mimetype()

@@ -2,6 +2,7 @@ package repository
 
 import (
 	"artion-api-graphql/internal/types"
+
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -21,7 +22,7 @@ func (p *Proxy) StoreUser(User *types.User) error {
 	return p.shared.StoreUser(User)
 }
 
-func (p *Proxy) UploadUserAvatar(address common.Address, image types.Image) error {
+func (p *Proxy) UploadUserAvatar(address common.Address, image types.Media) error {
 	cid, err := p.pinner.PinFile("user-avatar-"+address.String()+image.Type.Extension(), image.Data)
 	if err != nil {
 		return err
@@ -29,7 +30,7 @@ func (p *Proxy) UploadUserAvatar(address common.Address, image types.Image) erro
 	return p.shared.SetUserAvatar(address, cid)
 }
 
-func (p *Proxy) UploadUserBanner(address common.Address, image types.Image) error {
+func (p *Proxy) UploadUserBanner(address common.Address, image types.Media) error {
 	cid, err := p.pinner.PinFile("user-banner-"+address.String()+image.Type.Extension(), image.Data)
 	if err != nil {
 		return err

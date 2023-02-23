@@ -7,14 +7,15 @@ import (
 	"artion-api-graphql/internal/types"
 	"bytes"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
 	"io"
 	"mime/multipart"
 	"net/http"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
-type uploadProcessor func(identity common.Address, image types.Image, req *http.Request) (string, error)
+type uploadProcessor func(identity common.Address, image types.Media, req *http.Request) (string, error)
 
 // UploadImageHandler builds a HTTP handler function for images (tokens, user avatars) upload.
 func UploadImageHandler(log logger.Logger, process uploadProcessor) http.Handler {
@@ -71,12 +72,12 @@ func processImageUpload(req *http.Request, process uploadProcessor, log logger.L
 	}
 	content := buf.Bytes()
 
-	imgType, err := types.ImageTypeFromMimetype(content)
+	imgType, err := types.MediaTypeFromMimetype(content)
 	if err != nil {
 		return 500, err.Error()
 	}
 
-	image := types.Image{
+	image := types.Media{
 		Data: content,
 		Type: imgType,
 	}
@@ -91,7 +92,7 @@ func processImageUpload(req *http.Request, process uploadProcessor, log logger.L
 }
 
 // StoreUserAvatar sends an avatar image to backed repository.
-func StoreUserAvatar(identity common.Address, image types.Image, _ *http.Request) (string, error) {
+func StoreUserAvatar(identity common.Address, image types.Media, _ *http.Request) (string, error) {
 	err := repository.R().UploadUserAvatar(identity, image)
 	if err != nil {
 		return "", fmt.Errorf("user avatar upload failed; %s", err)
@@ -100,7 +101,7 @@ func StoreUserAvatar(identity common.Address, image types.Image, _ *http.Request
 }
 
 // StoreUserBanner sends an user banner to the backend repository.
-func StoreUserBanner(identity common.Address, image types.Image, _ *http.Request) (string, error) {
+func StoreUserBanner(identity common.Address, image types.Media, _ *http.Request) (string, error) {
 	err := repository.R().UploadUserBanner(identity, image)
 	if err != nil {
 		return "", fmt.Errorf("user banner upload failed; %s", err)
@@ -109,7 +110,7 @@ func StoreUserBanner(identity common.Address, image types.Image, _ *http.Request
 }
 
 // StoreToken validates and finalizes NFT metadata structure and sends it for uploading.
-func StoreToken(identity common.Address, image types.Image, req *http.Request) (string, error) {
+func StoreToken(identity common.Address, image types.Media, req *http.Request) (string, error) {
 	metadataJson := req.FormValue("metadata")
 	if metadataJson == "" {
 		return "", fmt.Errorf("no token metadata sent")
@@ -137,7 +138,7 @@ func StoreToken(identity common.Address, image types.Image, req *http.Request) (
 }
 
 // StoreCollection validates NFT collection metadata and sends the validated data to backend repository.
-func StoreCollection(identity common.Address, image types.Image, req *http.Request) (string, error) {
+func StoreCollection(identity common.Address, image types.Media, req *http.Request) (string, error) {
 	applicationJson := req.FormValue("data")
 	if applicationJson == "" {
 		return "", fmt.Errorf("no collection registration application sent")

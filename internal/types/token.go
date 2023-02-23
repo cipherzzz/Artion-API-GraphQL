@@ -36,7 +36,7 @@ type Token struct {
 	Symbol       string         `bson:"symbol"`
 	IpRights     string         `bson:"ip_rights"`
 	ImageURI     string         `bson:"image"`
-	ImageType    ImageType      `bson:"image_type"`
+	ImageType    MediaType      `bson:"image_type"`
 	AnimationURI string         `bson:"animation_uri"`
 	ExternalURI  string         `bson:"external_uri"`
 	Created      Time           `bson:"created"`

@@ -3,8 +3,9 @@ package repository
 import (
 	"artion-api-graphql/internal/types"
 	"fmt"
-	"github.com/ethereum/go-ethereum/common"
 	"time"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
 func (p *Proxy) GetLegacyCollection(address common.Address) (*types.LegacyCollection, error) {
@@ -37,7 +38,7 @@ func (p *Proxy) ListLegacyCollections(collectionFilter types.CollectionFilter, c
 	return colList, err
 }
 
-func (p *Proxy) UploadCollectionApplication(app types.CollectionApplication, image types.Image, owner common.Address) (err error) {
+func (p *Proxy) UploadCollectionApplication(app types.CollectionApplication, image types.Media, owner common.Address) (err error) {
 	imageCid, err := p.pinner.PinFile("collection-image-"+app.Contract.String(), image.Data)
 	if err != nil {
 		return fmt.Errorf("uploading collection image failed; %s", err)

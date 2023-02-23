@@ -42,7 +42,7 @@ func (p *Proxy) GetRawTokenJsonMetadata(uri string) ([]byte, error) {
 }
 
 // GetImage downloads an image expected on the given URI.
-func (p *Proxy) GetImage(imgUri string) (*types.Image, error) {
+func (p *Proxy) GetImage(imgUri string) (*types.Media, error) {
 	var key strings.Builder
 	key.WriteString("GetImage")
 	key.WriteString(imgUri)
@@ -58,11 +58,11 @@ func (p *Proxy) GetImage(imgUri string) (*types.Image, error) {
 		log.Warningf("image not found at %s", imgUri)
 		return nil, fmt.Errorf("image not found at given URI")
 	}
-	return data.(*types.Image), err
+	return data.(*types.Media), err
 }
 
 // GetImageThumbnail generates a thumbnail for an image expected to be downloadable from the given URI.
-func (p *Proxy) GetImageThumbnail(imgUri string) (*types.Image, error) {
+func (p *Proxy) GetImageThumbnail(imgUri string) (*types.Media, error) {
 	var key strings.Builder
 	key.WriteString("GetImageThumbnail")
 	key.WriteString(imgUri)
@@ -86,11 +86,11 @@ func (p *Proxy) GetImageThumbnail(imgUri string) (*types.Image, error) {
 	if data == nil {
 		return nil, err
 	}
-	return data.(*types.Image), err
+	return data.(*types.Media), err
 }
 
 // UploadTokenData stores JSON metadata along with the token image into the IPFS storage.
-func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Image) (uri string, err error) {
+func (p *Proxy) UploadTokenData(metadata types.JsonMetadata, image types.Media) (uri string, err error) {
 	cid, err := p.pinFile("token-image", image.Data)
 	if err != nil {
 		return "", fmt.Errorf("uploading token image failed; %s", err)
@@ -121,18 +121,18 @@ func (p *Proxy) pinFile(filename string, content []byte) (cid string, err error)
 }
 
 // getImageFromUri downloads image from given URI and detect its mimetype
-func (p *Proxy) getImageFromUri(uri string) (*types.Image, error) {
+func (p *Proxy) getImageFromUri(uri string) (*types.Media, error) {
 	data, _, err := p.getFileFromUri(uri)
 	if err != nil {
 		return nil, fmt.Errorf("unable to download image; %s", err)
 	}
 
-	imgType, err := types.ImageTypeFromMimetype(data)
-	if imgType == types.ImageTypeUnknown {
-		imgType = types.ImageTypeFromExtension(uri)
+	imgType, err := types.MediaTypeFromMimetype(data)
+	if imgType == types.MediaTypeUnknown {
+		imgType = types.MediaTypeFromExtension(uri)
 	}
 
-	out := types.Image{
+	out := types.Media{
 		Data: data,
 		Type: imgType,
 	}
