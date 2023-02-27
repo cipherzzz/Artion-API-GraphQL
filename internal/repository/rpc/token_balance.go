@@ -4,21 +4,23 @@ package rpc
 
 import (
 	"artion-api-graphql/internal/repository/rpc/contracts"
+	"math/big"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 )
 
 // CanMintErc721 checks if the given user can mint a new token on the given NFT contract.
-func (o *Opera) TokenBalance(contract common.Address, address common.Address) (uint64, error) {
+func (o *Opera) TokenBalance(contract common.Address, address common.Address) (*big.Int, error) {
 
 	token, err := contracts.NewErc20Caller(contract, o.ftm)
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
-	balance, error := token.BalanceOf(&bind.CallOpts{}, address)
+
+	balance, error := token.BalanceOf(nil, address)
 	if error != nil {
-		return 0, error
+		return nil, error
 	}
-	return uint64(balance.Uint64()), nil
+
+	return balance, nil
 }

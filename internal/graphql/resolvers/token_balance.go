@@ -3,7 +3,6 @@ package resolvers
 import (
 	"artion-api-graphql/internal/repository"
 	"artion-api-graphql/internal/types"
-	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
@@ -21,6 +20,6 @@ func (r *RootResolver) ErcTokenBalance(args struct {
 	}
 
 	return types.TokenBalance{
-		Balance: hexutil.Big(*big.NewInt(int64(balance))),
+		Balance: hexutil.Big(*balance),
 	}, nil
 }
