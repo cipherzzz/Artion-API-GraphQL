@@ -71,8 +71,6 @@ func (p *Proxy) getPayToken(address *common.Address) (*types.PayToken, error) {
 		return nil, err
 	}
 
-	fmt.Println("list", list, address)
-
 	// replace zero address (native tokens) by wFTM token
 	if bytes.Equal(address.Bytes(), zeroAddress.Bytes()) {
 		address = &wFtmAddress
