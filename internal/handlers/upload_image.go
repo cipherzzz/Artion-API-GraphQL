@@ -54,7 +54,7 @@ func processImageUpload(req *http.Request, process uploadProcessor, log logger.L
 		return 500, "Unable to parse multipart/form-data"
 	}
 
-	file, _, err := req.FormFile("file")
+	file, header, err := req.FormFile("file")
 	if err != nil {
 		return 500, "Unable to parse multipart/form-data file \"file\""
 	}
@@ -72,10 +72,10 @@ func processImageUpload(req *http.Request, process uploadProcessor, log logger.L
 	}
 	content := buf.Bytes()
 
-	imgType, err := types.MediaTypeFromMimetype(content)
-	if err != nil {
-		return 500, err.Error()
-	}
+	imgType := types.MediaTypeFromExtension(header.Filename)
+	// if err != nil {
+	// 	return 500, err.Error()
+	// }
 
 	image := types.Media{
 		Data: content,

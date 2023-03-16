@@ -25,6 +25,7 @@ const (
 	MediaTypeWebp
 	MediaTypeMp4
 	MediaTypeMp3
+	MediaTypeGlb
 )
 
 func (i MediaType) Mimetype() string {
@@ -90,6 +91,7 @@ func MediaTypeFromMimetype(data []byte) (MediaType, error) {
 			return MediaTypeSvg, nil
 		}
 	}
+
 	return MediaTypeUnknown, fmt.Errorf("unrecognized image type %s", mimetype)
 }
 
@@ -115,6 +117,9 @@ func MediaTypeFromExtension(uri string) (mimetype MediaType) {
 	}
 	if strings.HasSuffix(uri, ".mp3") {
 		return MediaTypeMp3
+	}
+	if strings.HasSuffix(uri, ".glb") {
+		return MediaTypeGlb
 	}
 	return MediaTypeUnknown
 }
