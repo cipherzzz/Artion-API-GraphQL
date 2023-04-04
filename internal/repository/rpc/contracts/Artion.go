@@ -14,6 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/event"
+	"github.com/ethereum/go-ethereum/log"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1359,6 +1360,8 @@ type ArtionMinted struct {
 // Solidity: event Minted(uint256 tokenId, address beneficiary, string tokenUri, address minter)
 func (_Artion *ArtionFilterer) FilterMinted(opts *bind.FilterOpts) (*ArtionMintedIterator, error) {
 
+	log.Info("Here in FilterMinted")
+
 	logs, sub, err := _Artion.contract.FilterLogs(opts, "Minted")
 	if err != nil {
 		return nil, err
@@ -1370,6 +1373,8 @@ func (_Artion *ArtionFilterer) FilterMinted(opts *bind.FilterOpts) (*ArtionMinte
 //
 // Solidity: event Minted(uint256 tokenId, address beneficiary, string tokenUri, address minter)
 func (_Artion *ArtionFilterer) WatchMinted(opts *bind.WatchOpts, sink chan<- *ArtionMinted) (event.Subscription, error) {
+
+	log.Info("Here in WatchMinted")
 
 	logs, sub, err := _Artion.contract.WatchLogs(opts, "Minted")
 	if err != nil {
@@ -1407,6 +1412,7 @@ func (_Artion *ArtionFilterer) WatchMinted(opts *bind.WatchOpts, sink chan<- *Ar
 //
 // Solidity: event Minted(uint256 tokenId, address beneficiary, string tokenUri, address minter)
 func (_Artion *ArtionFilterer) ParseMinted(log types.Log) (*ArtionMinted, error) {
+	
 	event := new(ArtionMinted)
 	if err := _Artion.contract.UnpackLog(event, "Minted", log); err != nil {
 		return nil, err

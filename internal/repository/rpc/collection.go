@@ -4,6 +4,7 @@ package rpc
 
 import (
 	"context"
+
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
@@ -66,6 +67,11 @@ func (o *Opera) SupportsInterface(adr *common.Address, in string) bool {
 		To:   adr,
 		Data: call,
 	}, nil)
+
+	log.Info("o.ftm", o.ftm)
+	log.Info("data", data)
+	log.Info("err", err)
+
 	if err != nil {
 		log.Warningf("erc-721 check failed; %s", err.Error())
 		return false

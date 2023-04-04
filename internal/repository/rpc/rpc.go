@@ -197,9 +197,9 @@ func New() *Opera {
 
 // connects opens RPC connection to the Opera node.
 func connect() (*client.Client, error) {
-	//c, err := client.Dial(cfg.Node.Url)
+	c, err := client.Dial(cfg.Node.Url)
 	fmt.Println("cfg.Node.Url", cfg.Node.Url)
-	c, err := client.Dial("https://rpc.ankr.com/fantom_testnet")
+	//c, err := client.Dial("https://rpc.ankr.com/fantom_testnet")
 	if err != nil {
 		log.Criticalf("can not connect blockchain node; %s", err.Error())
 		return nil, err

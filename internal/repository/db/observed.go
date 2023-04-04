@@ -4,6 +4,7 @@ package db
 import (
 	"artion-api-graphql/internal/types"
 	"context"
+
 	"github.com/ethereum/go-ethereum/common"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -37,6 +38,10 @@ func (db *MongoDbBridge) AddObservedContract(oc *types.ObservedContract) error {
 
 // ObservedContractAddressByType provides address of an observed contract by its type, if available.
 func (db *MongoDbBridge) ObservedContractAddressByType(t string) (*common.Address, error) {
+	log.Info("db", db.dbName)
+	log.Info("coObservedContracts", coObservedContracts)
+	log.Info("type", t)
+
 	col := db.client.Database(db.dbName).Collection(coObservedContracts)
 	sr := col.FindOne(
 		context.Background(),

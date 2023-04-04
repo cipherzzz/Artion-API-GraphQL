@@ -2,8 +2,9 @@
 package repository
 
 import (
-	"github.com/ethereum/go-ethereum/common"
 	"math/big"
+
+	"github.com/ethereum/go-ethereum/common"
 )
 
 const (
@@ -16,7 +17,9 @@ const (
 
 // IsErc721Contract checks if the given address is a contract with ERC-721 interface support.
 func (p *Proxy) IsErc721Contract(adr *common.Address) bool {
+	log.Info("adr", adr)
 	base := p.rpc.SupportsInterface(adr, Erc721BaseInterfaceID)
+	log.Info("base", base)
 	if ext := p.rpc.SupportsInterface(adr, Erc721MetadataInterfaceID); !ext {
 		log.Warningf("contract %s may not support ERC-721 Metadata extension", adr.String())
 	}

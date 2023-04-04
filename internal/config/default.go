@@ -50,13 +50,13 @@ const (
 	defMongoUrl = "mongodb://localhost:27017"
 
 	// defMongoDatabase holds the default name of the MongoDB local database
-	defMongoDatabase = "artion"
+	defMongoDatabase = "siren"
 
 	// defSharedMongoUrl holds default MongoDB connection string for shared/replicated database
 	defSharedMongoUrl = "mongodb://localhost:27017"
 
 	// defSharedMongoDatabase holds the default name of the shared/replicated MongoDB database
-	defSharedMongoDatabase = "artionshared"
+	defSharedMongoDatabase = "sirenshared"
 
 	// defCacheEvictionTime holds default time for in-memory eviction periods
 	defCacheEvictionTime = 15 * time.Minute
